@@ -1,0 +1,66 @@
+[
+    {
+        "name": "农场",
+        "electricity": 0,
+        "width": 8,
+        "height": 6,
+        "ferterlization": true,
+        "enhancer": false
+    },
+    {
+        "name": "打包器",
+        "electricity": 0,
+        "width": 4,
+        "height": 4,
+        "ferterlization": false,
+        "enhancer": false
+    },
+    {
+        "name": "火炉",
+        "electricity": 0,
+        "width": 10,
+        "height": 10,
+        "ferterlization": false,
+        "enhancer": false
+    },
+    {
+        "name": "炼油厂",
+        "electricity": 0,
+        "width": 6,
+        "height": 6,
+        "ferterlization": false,
+        "enhancer": true
+    },
+    {
+        "name": "电炉",
+        "electricity": 0,
+        "width": 10,
+        "height": 10,
+        "ferterlization": false,
+        "enhancer": false
+    },
+    {
+        "name": "粒子加速器",
+        "electricity": 0,
+        "width": 12,
+        "height": 8,
+        "ferterlization": false,
+        "enhancer": true
+    },
+    {
+        "name": "组装机",
+        "electricity": 0,
+        "width": 8,
+        "height": 8,
+        "ferterlization": false,
+        "enhancer": true
+    },
+    {
+        "name": "钻机",
+        "electricity": 0,
+        "width": 12,
+        "height": 6,
+        "ferterlization": false,
+        "enhancer": false
+    }
+]
