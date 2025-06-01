@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Land Optimizor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            background-color: #f5f5f5;
+            font-size: 24px;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        
+        .content {
+            padding: 0 20px 20px;
+        }
+        
+        .building-section {
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .building-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .building-header:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .building-image {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .building-name {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .building-content {
+            padding: 10px;
+        }
+        
+        .container {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .item-card {
+            background-color: white;
+            border-radius: 6px;
+            padding: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        
+        .item-image {
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            word-break: break-word;
+            font-size: 18px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 3px;
+            font-size: 18px;
+            padding: 2px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        
+        /* Desktop layout */
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            .item-image {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        
+        /* Mobile layout */
+        @media (max-width: 767px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .item-image {
+                width: calc(100% - 20px);
+                max-height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">Nova Land Optimizor</div>
+        <button class="submit-button">Submit</button>
+    </div>
+    
+    <div class="content">
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Furnace')">
+            <img src="img/buildings/Furnace.png" alt="Furnace" class="building-image">
+            <div class="building-name">Furnace</div>
+        </div>
+        <div class="building-content" id="Furnace" style="display: block">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Charcoal.png" alt="Charcoal" class="item-image">
+                    <div class="item-name">Charcoal</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Modular_Brick.png" alt="Modular_Brick" class="item-image">
+                    <div class="item-name">Modular Brick</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Iron_Ingot.png" alt="Iron_Ingot" class="item-image">
+                    <div class="item-name">Iron Ingot</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Copper_Ingot.png" alt="Copper_Ingot" class="item-image">
+                    <div class="item-name">Copper Ingot</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Titanium_Ingot.png" alt="Titanium_Ingot" class="item-image">
+                    <div class="item-name">Titanium Ingot</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Levittium.png" alt="Levittium" class="item-image">
+                    <div class="item-name">Levittium</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Electric_Furnace')">
+            <img src="img/buildings/Electric_Furnace.png" alt="Electric_Furnace" class="building-image">
+            <div class="building-name">Electric Furnace</div>
+        </div>
+        <div class="building-content" id="Electric_Furnace" style="display: block">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Steel.png" alt="Steel" class="item-image">
+                    <div class="item-name">Steel</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Glass.png" alt="Glass" class="item-image">
+                    <div class="item-name">Glass</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Glass_Bottle.png" alt="Glass_Bottle" class="item-image">
+                    <div class="item-name">Glass Bottle</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Lens.png" alt="Lens" class="item-image">
+                    <div class="item-name">Lens</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Behemuttium_Cell.png" alt="Behemuttium_Cell" class="item-image">
+                    <div class="item-name">Behemuttium Cell</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Titanium_Drill_Bit.png" alt="Titanium_Drill_Bit" class="item-image">
+                    <div class="item-name">Titanium Drill Bit</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Levittium_Cell.png" alt="Levittium_Cell" class="item-image">
+                    <div class="item-name">Levittium Cell</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Industrial_Refinery')">
+            <img src="img/buildings/Industrial_Refinery.png" alt="Industrial_Refinery" class="building-image">
+            <div class="building-name">Industrial Refinery</div>
+        </div>
+        <div class="building-content" id="Industrial_Refinery" style="display: block">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Plastic.png" alt="Plastic" class="item-image">
+                    <div class="item-name">Plastic</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Plasteel.png" alt="Plasteel" class="item-image">
+                    <div class="item-name">Plasteel</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Lubricant_Oil.png" alt="Lubricant_Oil" class="item-image">
+                    <div class="item-name">Lubricant Oil</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Super_Lubricant.png" alt="Super_Lubricant" class="item-image">
+                    <div class="item-name">Super Lubricant</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Super_Fertilizer.png" alt="Super_Fertilizer" class="item-image">
+                    <div class="item-name">Super Fertilizer</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Biofuel_Bottle.png" alt="Biofuel_Bottle" class="item-image">
+                    <div class="item-name">Biofuel Bottle</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Superglue.png" alt="Superglue" class="item-image">
+                    <div class="item-name">Superglue</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Super_Cooler_Fluid.png" alt="Super_Cooler_Fluid" class="item-image">
+                    <div class="item-name">Super Cooler Fluid</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Reinforced_Super_Metal.png" alt="Reinforced_Super_Metal" class="item-image">
+                    <div class="item-name">Reinforced Super Metal</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Behemuttium_Battery.png" alt="Behemuttium_Battery" class="item-image">
+                    <div class="item-name">Behemuttium Battery</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Ultra_Fertilizer.png" alt="Ultra_Fertilizer" class="item-image">
+                    <div class="item-name">Ultra Fertilizer</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Ultra_Lubricant.png" alt="Ultra_Lubricant" class="item-image">
+                    <div class="item-name">Ultra Lubricant</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Assembler')">
+            <img src="img/buildings/Assembler.png" alt="Assembler" class="building-image">
+            <div class="building-name">Assembler</div>
+        </div>
+        <div class="building-content" id="Assembler" style="display: block">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Electronic_Parts.png" alt="Electronic_Parts" class="item-image">
+                    <div class="item-name">Electronic Parts</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Computer_Module.png" alt="Computer_Module" class="item-image">
+                    <div class="item-name">Computer Module</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Smart_Sensor.png" alt="Smart_Sensor" class="item-image">
+                    <div class="item-name">Smart Sensor</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Advanced_Electronic_Parts.png" alt="Advanced_Electronic_Parts" class="item-image">
+                    <div class="item-name">Advanced Electronic Parts</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Supercomputer_Module.png" alt="Supercomputer_Module" class="item-image">
+                    <div class="item-name">Supercomputer Module</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Super_Control_Unit.png" alt="Super_Control_Unit" class="item-image">
+                    <div class="item-name">Super Control Unit</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Hypercomputer_Module.png" alt="Hypercomputer_Module" class="item-image">
+                    <div class="item-name">Hypercomputer Module</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Empty_Package.png" alt="Empty_Package" class="item-image">
+                    <div class="item-name">Empty Package</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Qubit_Chip.png" alt="Qubit_Chip" class="item-image">
+                    <div class="item-name">Qubit Chip</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Quantum_Connector.png" alt="Quantum_Connector" class="item-image">
+                    <div class="item-name">Quantum Connector</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Quantum_Computer.png" alt="Quantum_Computer" class="item-image">
+                    <div class="item-name">Quantum Computer</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Particle_Accelerator')">
+            <img src="img/buildings/Particle_Accelerator.png" alt="Particle_Accelerator" class="building-image">
+            <div class="building-name">Particle Accelerator</div>
+        </div>
+        <div class="building-content" id="Particle_Accelerator" style="display: block">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Dark_Matter.png" alt="Dark_Matter" class="item-image">
+                    <div class="item-name">Dark Matter</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Neutron_Core.png" alt="Neutron_Core" class="item-image">
+                    <div class="item-name">Neutron Core</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Stardust.png" alt="Stardust" class="item-image">
+                    <div class="item-name">Stardust</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Black_Hole.png" alt="Black_Hole" class="item-image">
+                    <div class="item-name">Black Hole</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Farm')">
+            <img src="img/buildings/Farm.png" alt="Farm" class="building-image">
+            <div class="building-name">Farm</div>
+        </div>
+        <div class="building-content" id="Farm" style="display: none">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Cactus_Flower.png" alt="Cactus_Flower" class="item-image">
+                    <div class="item-name">Cactus Flower</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Cornilia_Flower.png" alt="Cornilia_Flower" class="item-image">
+                    <div class="item-name">Cornilia Flower</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Juice_Ball.png" alt="Juice_Ball" class="item-image">
+                    <div class="item-name">Juice Ball</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Stretshroom.png" alt="Stretshroom" class="item-image">
+                    <div class="item-name">Stretshroom</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Sweetcane.png" alt="Sweetcane" class="item-image">
+                    <div class="item-name">Sweetcane</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Twig.png" alt="Twig" class="item-image">
+                    <div class="item-name">Twig</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Water_Ball.png" alt="Water_Ball" class="item-image">
+                    <div class="item-name">Water Ball</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Berry.png" alt="Berry" class="item-image">
+                    <div class="item-name">Berry</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Blood_Flower.png" alt="Blood_Flower" class="item-image">
+                    <div class="item-name">Blood Flower</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Seed_Extractor')">
+            <img src="img/buildings/Seed_Extractor.png" alt="Seed_Extractor" class="building-image">
+            <div class="building-name">Seed Extractor</div>
+        </div>
+        <div class="building-content" id="Seed_Extractor" style="display: none">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Blood_Flower_Seed.png" alt="Blood_Flower_Seed" class="item-image">
+                    <div class="item-name">Blood Flower Seed</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Cornilia_Flower_Seed.png" alt="Cornilia_Flower_Seed" class="item-image">
+                    <div class="item-name">Cornilia Flower Seed</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Huge_Stretshroom_Spores.png" alt="Huge_Stretshroom_Spores" class="item-image">
+                    <div class="item-name">Huge Stretshroom Spores</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Stretshroom_Spores.png" alt="Stretshroom_Spores" class="item-image">
+                    <div class="item-name">Stretshroom Spores</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Sweetcane_Seed.png" alt="Sweetcane_Seed" class="item-image">
+                    <div class="item-name">Sweetcane Seed</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Twig_Seed.png" alt="Twig_Seed" class="item-image">
+                    <div class="item-name">Twig Seed</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Animal_Barn')">
+            <img src="img/buildings/Animal_Barn.png" alt="Animal_Barn" class="building-image">
+            <div class="building-name">Animal Barn</div>
+        </div>
+        <div class="building-content" id="Animal_Barn" style="display: none">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Gold_Nugget.png" alt="Gold_Nugget" class="item-image">
+                    <div class="item-name">Gold Nugget</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Animal_Poop.png" alt="Animal_Poop" class="item-image">
+                    <div class="item-name">Animal Poop</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Animal_Scale.png" alt="Animal_Scale" class="item-image">
+                    <div class="item-name">Animal Scale</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="building-section">
+        <div class="building-header" onclick="toggleSection('Driller')">
+            <img src="img/buildings/Driller.png" alt="Driller" class="building-image">
+            <div class="building-name">Driller</div>
+        </div>
+        <div class="building-content" id="Driller" style="display: none">
+            <div class="container">
+
+                <div class="item-card">
+                    <img src="img/items/Stone.png" alt="Stone" class="item-image">
+                    <div class="item-name">Stone</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Copper_Ore.png" alt="Copper_Ore" class="item-image">
+                    <div class="item-name">Copper Ore</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Iron_Ore.png" alt="Iron_Ore" class="item-image">
+                    <div class="item-name">Iron Ore</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Titanium_Ore.png" alt="Titanium_Ore" class="item-image">
+                    <div class="item-name">Titanium Ore</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Gold_Nugget.png" alt="Gold_Nugget" class="item-image">
+                    <div class="item-name">Gold Nugget</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Sand.png" alt="Sand" class="item-image">
+                    <div class="item-name">Sand</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Jelly.png" alt="Jelly" class="item-image">
+                    <div class="item-name">Jelly</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="img/items/Behemuttium.png" alt="Behemuttium" class="item-image">
+                    <div class="item-name">Behemuttium</div>
+                    <div class="quantity-selector">
+                        <input type="number" min="0" value="0" class="quantity-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section.style.display === 'block') {
+                section.style.display = 'none';
+            } else {
+                section.style.display = 'block';
+            }
+        }
+        
+        // Optional: Add keyboard accessibility
+        document.querySelectorAll('.building-header').forEach(header => {
+            header.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    header.click();
+                }
+            });
+            header.setAttribute('tabindex', '0');
+            header.setAttribute('role', 'button');
+        });
+        
+        // Submit button placeholder functionality
+        document.querySelector('.submit-button').addEventListener('click', () => {
+            // Collect all quantity inputs
+            const inputs = document.querySelectorAll('.quantity-input');
+            const params = new URLSearchParams();
+            
+            inputs.forEach(input => {
+                if (input.value > 0) {
+                    // Get the item name from the card
+                    const itemName = input.closest('.item-card').querySelector('.item-name').textContent.replace(/ /g, '_');
+                    params.append(itemName, input.value);
+                }
+            });
+            
+            // Redirect to the calculator page with the parameters
+            window.location.href = `production_calculator.html?${params.toString()}`;
+        });
+    </script>
+</body>
+</html>

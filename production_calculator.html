@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            background-color: #f5f5f5;
+            font-size: 18px;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .back-button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .back-button:hover {
+            background-color: #0b7dda;
+        }
+        
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .results-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .building-results {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .building-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            user-select: none;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .building-header:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .building-image {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .building-name {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .item-name {
+            font-weight: bold;
+        }
+        
+        .item-quantity {
+            color: #2196F3;
+        }
+        
+        .total-row {
+            font-weight: bold;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #ddd;
+        }
+        
+        @media (max-width: 767px) {
+            .content {
+                padding: 15px;
+            }
+            
+            .building-header {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">Production Calculator</div>
+        <button class="back-button" onclick="window.location.href='./item_selection.html'">Back</button>
+    </div>
+    
+    <div class="content">
+        <div class="results-section">
+            <h2>Selected Items</h2>
+            <p>Here are the items you selected for production:</p>
+            
+            <!-- This will be populated by JavaScript -->
+            <div id="results-container"></div>
+            
+            <div class="total-row">
+                Total Items Selected: <span id="total-count">0</span>
+            </div>
+        </div>
+        
+        <div class="results-section">
+            <h2>Production Requirements</h2>
+            <p>Calculated requirements will appear here:</p>
+            
+            <!-- Placeholder for calculation results -->
+            <div id="calculations-container">
+                <div id="requirements-results"></div>
+                <div id="materials-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let itemsData = [];
+
+        // Load the JSON data
+        async function loadItemsData() {
+            try {
+                const response = await fetch('./src/nova_lands.json');
+                itemsData = await response.json();
+                initializePage();
+            } catch (error) {
+                console.error('Error loading items data:', error);
+                alert('Failed to load items data. Please check console for details.');
+            }
+        }
+
+        // 使用队列计算生产需求
+        function calculateRequirements(targetItems) {
+            const materials = {};
+            const buildings = {};
+            const queue = Object.entries(targetItems).map(([name, qty]) => ({name, qty}));
+            
+            while (queue.length > 0) {
+                const {name, qty} = queue.shift();
+                const recipe = itemsData.find(item => item.name === name);
+                
+                if (!recipe) {
+                    // 一级材料
+                    materials[name] = (materials[name] || 0) + qty;
+                    continue;
+                }
+                
+                // 记录所需建筑 (每分钟需要的建筑数量)
+                const building = recipe.device;
+                const buildingsNeeded = qty / recipe.output * recipe.time / 60;
+                buildings[building] = (buildings[building] || 0) + buildingsNeeded;
+                
+                // 添加材料到队列 (每分钟需要的材料数量)
+                if (recipe.materials && recipe.materials.length > 0) {
+                    recipe.materials.forEach(material => {
+                        const materialQty = material.quantity * qty / recipe.output;
+                        queue.push({name: material.name, qty: materialQty});
+                    });
+                }
+            }
+            
+            return {materials, buildings};
+        }
+
+        // Function to parse URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return params;
+        }
+        
+        // Function to display the selected items
+        function displaySelectedItems() {
+            const params = getUrlParams();
+            const resultsContainer = document.getElementById('results-container');
+            const totalCountElement = document.getElementById('total-count');
+            let totalCount = 0;
+            
+            // Group items by building
+            const buildings = {};
+            
+            params.forEach((value, key) => {
+                const quantity = parseInt(value);
+                if (quantity > 0) {
+                    const itemName = key.replace(/_/g, ' ');
+                    const recipe = itemsData.find(item => item.name === itemName);
+                    const building = recipe ? recipe.device : "Raw Material";
+                    
+                    if (!buildings[building]) {
+                        buildings[building] = [];
+                    }
+                    buildings[building].push({name: itemName, quantity});
+                    totalCount += quantity;
+                }
+            });
+            
+            // Display the items grouped by building
+            for (const [building, items] of Object.entries(buildings)) {
+                const buildingElement = document.createElement('div');
+                buildingElement.innerHTML = `
+                    <div class="building-header" onclick="toggleBuildingResults('${building}')">
+                        <div class="building-name">${building}</div>
+                    </div>
+                    <div class="building-results" id="${building}-results">
+                        ${items.map(item => `
+                            <div class="item-row">
+                                <span class="item-name">${item.name}</span>
+                                <span class="item-quantity">${item.quantity}/min</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                resultsContainer.appendChild(buildingElement);
+            }
+            
+            totalCountElement.textContent = totalCount;
+        }
+        
+        // Toggle building results visibility
+        function toggleBuildingResults(building) {
+            const element = document.getElementById(`${building}-results`);
+            if (element.style.display === 'block') {
+                element.style.display = 'none';
+            } else {
+                element.style.display = 'block';
+            }
+        }
+        
+        // 计算生产需求
+        function calculateProductionRequirements() {
+            const params = getUrlParams();
+            const targetItems = {};
+            
+            params.forEach((value, key) => {
+                const quantity = parseInt(value);
+                if (quantity > 0) {
+                    targetItems[key.replace(/_/g, ' ')] = quantity;
+                }
+            });
+            
+            // 直接计算需求
+            const results = calculateRequirements(targetItems);
+            displayRequirements(results);
+        }
+        
+        // 显示计算结果
+        function displayRequirements(data) {
+            const requirementsContainer = document.getElementById('requirements-results');
+            const materialsContainer = document.getElementById('materials-results');
+            
+            // 显示需求建筑
+            requirementsContainer.innerHTML = `
+                <h3>Required Buildings (per minute)</h3>
+                ${Object.entries(data.buildings).map(([building, count]) => `
+                    <div class="item-row">
+                        <span class="item-name">${building}</span>
+                        <span class="item-quantity">${count.toFixed(2)}</span>
+                    </div>
+                `).join('')}
+            `;
+            
+            // 显示原材料需求
+            materialsContainer.innerHTML = `
+                <h3>Material Requirements (per minute)</h3>
+                ${Object.entries(data.materials).map(([material, quantity]) => `
+                    <div class="item-row">
+                        <span class="item-name">${material}</span>
+                        <span class="item-quantity">${quantity.toFixed(2)}</span>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Initialize the page
+        function initializePage() {
+            displaySelectedItems();
+            calculateProductionRequirements();
+        }
+        
+        // Start loading data when page loads
+        document.addEventListener('DOMContentLoaded', loadItemsData);
+    </script>
+</body>
+</html>
