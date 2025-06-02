@@ -1,1038 +1,1099 @@
 [
   {
-    "name": "果汁球",
+    "name": "Juice_Ball",
+    "chinese_name": "果汁球",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "仙人掌花",
+    "name": "Cactus_Flower",
+    "chinese_name": "仙人掌花",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "树枝",
+    "name": "Twig",
+    "chinese_name": "树枝",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "甜蔗",
+    "name": "Sweet_Cane",
+    "chinese_name": "甜蔗",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "山茱萸",
+    "name": "Dogwood",
+    "chinese_name": "山茱萸",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "弹力菇",
+    "name": "Bouncy_Shroom",
+    "chinese_name": "弹力菇",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "树枝",
+    "name": "Animal_Feces",
+    "chinese_name": "动物粪便",
     "output": null,
     "time": null,
-    "device": "农场",
+    "device": "Farm",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "动物粪便",
-    "output": null,
-    "time": null,
-    "device": "农场",
-    "primary_material": 1,
-    "materials": []
-  },
-  {
-    "name": "利维提姆 包",
+    "name": "Levittium_Package",
+    "chinese_name": "利维提姆 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "利维提姆",
+        "name": "Levittium",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "黏液油 包",
+    "name": "Slime_Oil_Package",
+    "chinese_name": "黏液油 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "黏液油",
+        "name": "Slime_Oil",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "伯希姆丁 包",
+    "name": "Behemuttium_Package",
+    "chinese_name": "伯希姆丁 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "伯希姆丁",
+        "name": "Behemuttium",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "强化超级金属 包",
+    "name": "Reinforced_Super_Metal_Package",
+    "chinese_name": "强化超级金属 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "强化超级金属",
+        "name": "Reinforced_Super_Metal",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "铁锭 包",
+    "name": "Iron_Ingot_Package",
+    "chinese_name": "铁锭 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铁锭",
+        "name": "Iron_Ingot",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "玻璃 包",
+    "name": "Glass_Package",
+    "chinese_name": "玻璃 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "玻璃",
+        "name": "Glass",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "铁矿 包",
+    "name": "Iron_Ore_Package",
+    "chinese_name": "铁矿 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铁矿",
+        "name": "Iron_Ore",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "钛矿 包",
+    "name": "Titanium_Ore_Package",
+    "chinese_name": "钛矿 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "钛矿",
+        "name": "Titanium_Ore",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "钛锭 包",
+    "name": "Titanium_Ingot_Package",
+    "chinese_name": "钛锭 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "钛锭",
+        "name": "Titanium_Ingot",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "铜矿 包",
+    "name": "Copper_Ore_Package",
+    "chinese_name": "铜矿 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铜矿",
+        "name": "Copper_Ore",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "木炭 包",
+    "name": "Charcoal_Package",
+    "chinese_name": "木炭 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "木炭",
+        "name": "Charcoal",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "树枝 包",
+    "name": "Twig_Package",
+    "chinese_name": "树枝 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "树枝",
+        "name": "Twig",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "铜锭 包",
+    "name": "Copper_Ingot_Package",
+    "chinese_name": "铜锭 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铜锭",
+        "name": "Copper_Ingot",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "沙子 包",
+    "name": "Sand_Package",
+    "chinese_name": "沙子 包",
     "output": 1.0,
     "time": 15.0,
-    "device": "打包器",
+    "device": "Packager",
     "primary_material": 0,
     "materials": [
       {
-        "name": "沙子",
+        "name": "Sand",
         "quantity": 100.0
       },
       {
-        "name": "包",
+        "name": "Empty_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "铁锭",
+    "name": "Iron_Ingot",
+    "chinese_name": "铁锭",
     "output": 150.0,
     "time": 100.0,
-    "device": "火炉",
+    "device": "Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铁矿 包",
+        "name": "Iron_Ore_Package",
         "quantity": 2.0
       },
       {
-        "name": "木炭 包",
+        "name": "Charcoal_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "钛锭",
+    "name": "Titanium_Ingot",
+    "chinese_name": "钛锭",
     "output": 150.0,
     "time": 100.0,
-    "device": "火炉",
+    "device": "Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "钛矿 包",
+        "name": "Titanium_Ore_Package",
         "quantity": 2.0
       },
       {
-        "name": "木炭 包",
+        "name": "Charcoal_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "铜锭",
+    "name": "Copper_Ingot",
+    "chinese_name": "铜锭",
     "output": 150.0,
     "time": 100.0,
-    "device": "火炉",
+    "device": "Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铜矿 包",
+        "name": "Copper_Ore_Package",
         "quantity": 2.0
       },
       {
-        "name": "木炭 包",
+        "name": "Charcoal_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "木炭",
+    "name": "Charcoal",
+    "chinese_name": "木炭",
     "output": 100.0,
     "time": 30.0,
-    "device": "火炉",
+    "device": "Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "树枝 包",
+        "name": "Twig_Package",
         "quantity": 2.0
       }
     ]
   },
   {
-    "name": "利维提姆",
+    "name": "Levittium",
+    "chinese_name": "利维提姆",
     "output": 900.0,
     "time": 15.0,
-    "device": "火炉",
+    "device": "Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "黏液油 包",
+        "name": "Slime_Oil_Package",
         "quantity": 1.0
       },
       {
-        "name": "伯希姆丁 包",
+        "name": "Behemuttium_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "伯希姆丁电池",
+    "name": "Behemuttium_Battery",
+    "chinese_name": "伯希姆丁电池",
     "output": 2.0,
     "time": 1440.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "强化超级金属",
+        "name": "Reinforced_Super_Metal",
         "quantity": 1.0
       },
       {
-        "name": "伯希姆丁原件",
+        "name": "Behemuttium_Component",
         "quantity": 2.0
       },
       {
-        "name": "生物燃料瓶",
+        "name": "Biofuel_Bottle",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "强化超级金属",
+    "name": "Reinforced_Super_Metal",
+    "chinese_name": "强化超级金属",
     "output": 2.0,
     "time": 360.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "塑钢",
+        "name": "Plasteel",
         "quantity": 1.0
       },
       {
-        "name": "钛锭",
+        "name": "Titanium_Ingot",
         "quantity": 2.0
       },
       {
-        "name": "强力胶",
+        "name": "Superglue",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "超级冷却液",
+    "name": "Super_Cooler_Fluid",
+    "chinese_name": "超级冷却液",
     "output": 3.0,
     "time": 90.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "玻璃瓶",
+        "name": "Glass_Bottle",
         "quantity": 2.0
       },
       {
-        "name": "果汁球",
+        "name": "Juice_Ball",
         "quantity": 6.0
       },
       {
-        "name": "仙人掌花",
+        "name": "Cactus_Flower",
         "quantity": 2.0
       }
     ]
   },
   {
-    "name": "塑钢",
+    "name": "Plasteel",
+    "chinese_name": "塑钢",
     "output": 2.0,
     "time": 180.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铁锭",
+        "name": "Iron_Ingot",
         "quantity": 1.0
       },
       {
-        "name": "塑料",
+        "name": "Plastic",
         "quantity": 1.0
       },
       {
-        "name": "动物鳞片",
+        "name": "Animal_Scale",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "塑料",
+    "name": "Plastic",
+    "chinese_name": "塑料",
     "output": 2.0,
     "time": 180.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "弹力菇",
+        "name": "Bouncy_Shroom",
         "quantity": 4.0
       }
     ]
   },
   {
-    "name": "超级润滑剂",
+    "name": "Super_Lubricant",
+    "chinese_name": "超级润滑剂",
     "output": 3.0,
     "time": 270.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "玻璃瓶",
+        "name": "Glass_Bottle",
         "quantity": 2.0
       },
       {
-        "name": "山茱萸",
+        "name": "Dogwood",
         "quantity": 4.0
       },
       {
-        "name": "果汁球",
+        "name": "Juice_Ball",
         "quantity": 16.0
       }
     ]
   },
   {
-    "name": "超级肥料",
+    "name": "Super_Fertilizer",
+    "chinese_name": "超级肥料",
     "output": 3.0,
     "time": 90.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "动物粪便",
+        "name": "Animal_Feces",
         "quantity": 2.0
       }
     ]
   },
   {
-    "name": "强力胶",
+    "name": "Superglue",
+    "chinese_name": "强力胶",
     "output": 3.0,
     "time": 90.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "果冻",
+        "name": "Jelly",
         "quantity": 4.0
       },
       {
-        "name": "木炭",
+        "name": "Charcoal",
         "quantity": 4.0
       }
     ]
   },
   {
-    "name": "生物燃料瓶",
+    "name": "Biofuel_Bottle",
+    "chinese_name": "生物燃料瓶",
     "output": 3.0,
     "time": 90.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "玻璃瓶",
+        "name": "Glass_Bottle",
         "quantity": 2.0
       },
       {
-        "name": "甜蔗",
+        "name": "Sweet_Cane",
         "quantity": 12.0
       }
     ]
   },
   {
-    "name": "顶级润滑剂",
+    "name": "Ultra_Lubricant",
+    "chinese_name": "顶级润滑剂",
     "output": 2.0,
     "time": 720.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "超级润滑剂",
+        "name": "Super_Lubricant",
         "quantity": 1.0
       },
       {
-        "name": "暗物质",
+        "name": "Dark_Matter",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "润滑剂",
+    "name": "Lubricant_Oil",
+    "chinese_name": "润滑剂",
     "output": 3.0,
     "time": 90.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "玻璃瓶",
+        "name": "Glass_Bottle",
         "quantity": 2.0
       },
       {
-        "name": "山茱萸",
+        "name": "Dogwood",
         "quantity": 4.0
       }
     ]
   },
   {
-    "name": "顶级肥料",
+    "name": "Ultra_Fertilizer",
+    "chinese_name": "顶级肥料",
     "output": 2.0,
     "time": 720.0,
-    "device": "炼油厂",
+    "device": "Industrial_Refinery",
     "primary_material": 0,
     "materials": [
       {
-        "name": "超级肥料",
+        "name": "Super_Fertilizer",
         "quantity": 1.0
       },
       {
-        "name": "星尘",
+        "name": "Stardust",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "利维提姆电池",
+    "name": "Levittium_Cell",
+    "chinese_name": "利维提姆电池",
     "output": 150.0,
     "time": 3000.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "伯希姆丁 包",
+        "name": "Behemuttium_Package",
         "quantity": 1.0
       },
       {
-        "name": "伯希姆丁电池",
+        "name": "Behemuttium_Battery",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "伯希姆丁原件",
+    "name": "Behemuttium_Component",
+    "chinese_name": "伯希姆丁原件",
     "output": 150.0,
     "time": 6000.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "伯希姆丁 包",
+        "name": "Behemuttium_Package",
         "quantity": 10.0
       },
       {
-        "name": "强化超级金属 包",
+        "name": "Reinforced_Super_Metal_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "镜头",
+    "name": "Lens",
+    "chinese_name": "镜头",
     "output": 150.0,
     "time": 1500.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铁锭 包",
+        "name": "Iron_Ingot_Package",
         "quantity": 1.0
       },
       {
-        "name": "玻璃 包",
+        "name": "Glass_Package",
         "quantity": 2.0
       }
     ]
   },
   {
-    "name": "玻璃",
+    "name": "Glass",
+    "chinese_name": "玻璃",
     "output": 25.0,
     "time": 165.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "沙子 包",
+        "name": "Sand_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "玻璃瓶",
+    "name": "Glass_Bottle",
+    "chinese_name": "玻璃瓶",
     "output": 150.0,
     "time": 1000.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "玻璃 包",
+        "name": "Glass_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "钢铁",
+    "name": "Steel",
+    "chinese_name": "钢铁",
     "output": 75.0,
     "time": 6000.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "铁锭 包",
+        "name": "Iron_Ingot_Package",
         "quantity": 1.0
       },
       {
-        "name": "铜矿 包",
+        "name": "Copper_Ore_Package",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "钻头",
+    "name": "Titanium_Drill_Bit",
+    "chinese_name": "钻头",
     "output": 75.0,
     "time": 3000.0,
-    "device": "电炉",
+    "device": "Electric_Furnace",
     "primary_material": 0,
     "materials": [
       {
-        "name": "钛锭 包",
+        "name": "Titanium_Ingot_Package",
         "quantity": 2.0
       }
     ]
   },
   {
-    "name": "黑洞",
+    "name": "Black_Hole",
+    "chinese_name": "黑洞",
     "output": 1.0,
     "time": 2304.0,
-    "device": "粒子加速器",
+    "device": "Particle_Accelerator",
     "primary_material": 0,
     "materials": [
       {
-        "name": "中子核心",
+        "name": "Neutron_Core",
         "quantity": 3.0
       }
     ]
   },
   {
-    "name": "中子核心",
+    "name": "Neutron_Core",
+    "chinese_name": "中子核心",
     "output": 1.0,
     "time": 2304.0,
-    "device": "粒子加速器",
+    "device": "Particle_Accelerator",
     "primary_material": 0,
     "materials": [
       {
-        "name": "量子计算机",
+        "name": "Quantum_Computer",
         "quantity": 1.0
       },
       {
-        "name": "利维提姆 包",
+        "name": "Levittium_Package",
         "quantity": 10.0
       }
     ]
   },
   {
-    "name": "星尘",
+    "name": "Stardust",
+    "chinese_name": "星尘",
     "output": 5.0,
     "time": 2304.0,
-    "device": "粒子加速器",
+    "device": "Particle_Accelerator",
     "primary_material": 0,
     "materials": [
       {
-        "name": "中子核心",
+        "name": "Neutron_Core",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "暗物质",
+    "name": "Dark_Matter",
+    "chinese_name": "暗物质",
     "output": 5.0,
     "time": 2304.0,
-    "device": "粒子加速器",
+    "device": "Particle_Accelerator",
     "primary_material": 0,
     "materials": [
       {
-        "name": "黑洞",
+        "name": "Black_Hole",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "量子计算机",
+    "name": "Quantum_Computer",
+    "chinese_name": "量子计算机",
     "output": 2.0,
     "time": 2880.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "量子比特芯片",
+        "name": "Qubit_Chip",
         "quantity": 2.0
       },
       {
-        "name": "量子链接器",
+        "name": "Quantum_Connector",
         "quantity": 1.0
       },
       {
-        "name": "利维提姆电池",
+        "name": "Levittium_Cell",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "量子比特芯片",
+    "name": "Qubit_Chip",
+    "chinese_name": "量子比特芯片",
     "output": 2.0,
     "time": 1440.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "究极计算机模块",
+        "name": "Hypercomputer_Module",
         "quantity": 1.0
       },
       {
-        "name": "利维提姆",
+        "name": "Levittium",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "量子链接器",
+    "name": "Quantum_Connector",
+    "chinese_name": "量子链接器",
     "output": 2.0,
     "time": 720.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "利维提姆",
+        "name": "Levittium",
         "quantity": 1.0
       },
       {
-        "name": "塑钢",
+        "name": "Plasteel",
         "quantity": 1.0
       },
       {
-        "name": "金粒",
+        "name": "Gold_Pellet",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "究极计算机模块",
+    "name": "Hypercomputer_Module",
+    "chinese_name": "究极计算机模块",
     "output": 2.0,
     "time": 2880.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "超级计算机模块",
+        "name": "Supercomputer_Module",
         "quantity": 2.0
       },
       {
-        "name": "超级控制单元",
+        "name": "Super_Control_Unit",
         "quantity": 1.0
       },
       {
-        "name": "伯希姆丁电池",
+        "name": "Behemuttium_Battery",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "超级计算机模块",
+    "name": "Supercomputer_Module",
+    "chinese_name": "超级计算机模块",
     "output": 2.0,
     "time": 1440.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "先进电子零件",
+        "name": "Advanced_Electronic_Parts",
         "quantity": 2.0
       },
       {
-        "name": "强化超级金属",
+        "name": "Reinforced_Super_Metal",
         "quantity": 1.0
       },
       {
-        "name": "超级冷却液",
+        "name": "Super_Cooler_Fluid",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "超级控制单元",
+    "name": "Super_Control_Unit",
+    "chinese_name": "超级控制单元",
     "output": 2.0,
     "time": 1440.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "先进电子零件",
+        "name": "Advanced_Electronic_Parts",
         "quantity": 2.0
       },
       {
-        "name": "伯希姆丁原件",
+        "name": "Behemuttium_Component",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "先进电子零件",
+    "name": "Advanced_Electronic_Parts",
+    "chinese_name": "先进电子零件",
     "output": 2.0,
     "time": 1440.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "电脑模块",
+        "name": "Computer_Module",
         "quantity": 1.0
       },
       {
-        "name": "智能传感器",
+        "name": "Smart_Sensor",
         "quantity": 1.0
       },
       {
-        "name": "钛锭",
+        "name": "Titanium_Ingot",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "电脑模块",
+    "name": "Computer_Module",
+    "chinese_name": "电脑模块",
     "output": 2.0,
     "time": 720.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "塑钢",
+        "name": "Plasteel",
         "quantity": 2.0
       },
       {
-        "name": "电子零件",
+        "name": "Electronic_Parts",
         "quantity": 2.0
       }
     ]
   },
   {
-    "name": "智能传感器",
+    "name": "Smart_Sensor",
+    "chinese_name": "智能传感器",
     "output": 2.0,
     "time": 720.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "镜头",
+        "name": "Lens",
         "quantity": 1.0
       },
       {
-        "name": "电子零件",
+        "name": "Electronic_Parts",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "电子零件",
+    "name": "Electronic_Parts",
+    "chinese_name": "电子零件",
     "output": 2.0,
     "time": 540.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "塑钢",
+        "name": "Plasteel",
         "quantity": 1.0
       },
       {
-        "name": "金粒",
+        "name": "Gold_Pellet",
         "quantity": 1.0
       }
     ]
   },
   {
-    "name": "包",
+    "name": "Empty_Package",
+    "chinese_name": "包",
     "output": 3.0,
     "time": 12.0,
-    "device": "组装机",
+    "device": "Assembler",
     "primary_material": 0,
     "materials": [
       {
-        "name": "树枝",
+        "name": "Twig",
         "quantity": 8.0
       }
     ]
   },
   {
-    "name": "金粒",
+    "name": "Gold_Pellet",
+    "chinese_name": "金粒",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "沙子",
+    "name": "Sand",
+    "chinese_name": "沙子",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "铁矿",
+    "name": "Iron_Ore",
+    "chinese_name": "铁矿",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "铜矿",
+    "name": "Copper_Ore",
+    "chinese_name": "铜矿",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "果冻",
+    "name": "Jelly",
+    "chinese_name": "果冻",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "动物鳞片",
+    "name": "Animal_Scale",
+    "chinese_name": "动物鳞片",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "伯希姆丁",
+    "name": "Behemuttium",
+    "chinese_name": "伯希姆丁",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "黏液油",
+    "name": "Slime_Oil",
+    "chinese_name": "黏液油",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   },
   {
-    "name": "钛矿",
+    "name": "Titanium_Ore",
+    "chinese_name": "钛矿",
     "output": null,
     "time": null,
-    "device": "钻机",
+    "device": "Driller",
     "primary_material": 1,
     "materials": []
   }

@@ -185,18 +185,23 @@
                 const {name, qty} = queue.shift();
                 const recipe = itemsData.find(item => item.name === name);
                 
+                // 如果找不到配方，报错
                 if (!recipe) {
-                    // 一级材料
+                    throw new Error(`找不到 ${name} 的生产配方`);
+                }
+                
+                // 如果是一级材料（primary_material === 1）
+                if (recipe.primary_material === 1) {
                     materials[name] = (materials[name] || 0) + qty;
                     continue;
                 }
                 
-                // 记录所需建筑 (每分钟需要的建筑数量)
+                // 计算建筑需求（每分钟）
                 const building = recipe.device;
                 const buildingsNeeded = qty / recipe.output * recipe.time / 60;
                 buildings[building] = (buildings[building] || 0) + buildingsNeeded;
                 
-                // 添加材料到队列 (每分钟需要的材料数量)
+                // 添加材料需求到队列
                 if (recipe.materials && recipe.materials.length > 0) {
                     recipe.materials.forEach(material => {
                         const materialQty = material.quantity * qty / recipe.output;
@@ -205,7 +210,7 @@
                 }
             }
             
-            return {materials, buildings};
+            return { materials, buildings };
         }
 
         // Function to parse URL parameters
@@ -279,7 +284,7 @@
             params.forEach((value, key) => {
                 const quantity = parseInt(value);
                 if (quantity > 0) {
-                    targetItems[key.replace(/_/g, ' ')] = quantity;
+                    targetItems[key] = quantity;
                 }
             });
             
