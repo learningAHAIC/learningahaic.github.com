@@ -175,8 +175,8 @@
             }
         }
 
-        // 使用队列计算生产需求
-        function calculateRequirements(targetItems) {
+        // Calculate production requirements using queue
+        function calculateRequirements(targetItems, buildingEfficiency) {
             const materials = {};
             const buildings = {};
             const queue = Object.entries(targetItems).map(([name, qty]) => ({name, qty}));
@@ -185,27 +185,34 @@
                 const {name, qty} = queue.shift();
                 const recipe = itemsData.find(item => item.name === name);
                 
-                // 如果找不到配方，报错
                 if (!recipe) {
-                    throw new Error(`找不到 ${name} 的生产配方`);
+                    console.error(`Recipe not found for: ${name}`);
+                    continue;
                 }
                 
-                // 如果是一级材料（primary_material === 1）
+                // Handle raw materials
                 if (recipe.primary_material === 1) {
                     materials[name] = (materials[name] || 0) + qty;
                     continue;
                 }
                 
-                // 计算建筑需求（每分钟）
+                // Calculate building requirements with efficiency
                 const building = recipe.device;
-                const buildingsNeeded = qty / recipe.output * recipe.time / 60;
+                const buildingKey = building.replace(/ /g, '');
+                const efficiency = buildingEfficiency[buildingKey] || 100;
+                const efficiencyFactor = efficiency / 100;
+                
+                const buildingsNeeded = qty / recipe.output * recipe.time / 60 / efficiencyFactor;
                 buildings[building] = (buildings[building] || 0) + buildingsNeeded;
                 
-                // 添加材料需求到队列
-                if (recipe.materials && recipe.materials.length > 0) {
+                // Add material requirements to queue
+                if (recipe.materials?.length) {
                     recipe.materials.forEach(material => {
-                        const materialQty = material.quantity * qty / recipe.output;
-                        queue.push({name: material.name, qty: materialQty});
+                        const materialQty = material.quantity * qty / recipe.output * efficiencyFactor;
+                        queue.push({
+                            name: material.name.replace(/ /g, '_'),
+                            qty: materialQty
+                        });
                     });
                 }
             }
@@ -231,10 +238,18 @@
             
             params.forEach((value, key) => {
                 const quantity = parseInt(value);
+                if (key.endsWith('_efficiency')) {
+                    // Skip efficiency parameters
+                    return;
+                }
                 if (quantity > 0) {
-                    const itemName = key.replace(/_/g, ' ');
+                    const itemName = key;
                     const recipe = itemsData.find(item => item.name === itemName);
-                    const building = recipe ? recipe.device : "Raw Material";
+                    const building = recipe ? recipe.device : null;
+                    if (!building) {
+                        console.warn(`No building found for item: ${itemName}`);
+                        return;
+                    }
                     
                     if (!buildings[building]) {
                         buildings[building] = [];
@@ -249,11 +264,17 @@
                 const buildingElement = document.createElement('div');
                 buildingElement.innerHTML = `
                     <div class="building-header" onclick="toggleBuildingResults('${building}')">
+                    ${building !== 'Raw Material' ? `<img src="img/buildings/${building}.png" alt="${building}" class="building-image">` : ''}
                         <div class="building-name">${building}</div>
                     </div>
                     <div class="building-results" id="${building}-results">
                         ${items.map(item => `
                             <div class="item-row">
+                                ${(() => {
+                                    const itemRecipe = itemsData.find(i => i.name === item.name);
+                                    return itemRecipe && itemRecipe.primary_material !== 1 ? 
+                                        `<img src="img/items/${item.name.replace(/ /g, '_')}.png" alt="${item.name}" class="item-image" style="width:24px;height:24px;margin-right:8px;">` : '';
+                                })()}
                                 <span class="item-name">${item.name}</span>
                                 <span class="item-quantity">${item.quantity}/min</span>
                             </div>
@@ -280,8 +301,14 @@
         function calculateProductionRequirements() {
             const params = getUrlParams();
             const targetItems = {};
+            const buildingEfficiency = {};
             
             params.forEach((value, key) => {
+                if (key.endsWith('_efficiency')) {
+                    buildingEfficiency[key.replace('_efficiency', '')] = parseFloat(value);
+                    console.log(`Building: ${key.replace('_efficiency', '')}, Efficiency: ${buildingEfficiency[key.replace('_efficiency', '')]}%`);
+                    return;
+                }
                 const quantity = parseInt(value);
                 if (quantity > 0) {
                     targetItems[key] = quantity;
@@ -289,7 +316,7 @@
             });
             
             // 直接计算需求
-            const results = calculateRequirements(targetItems);
+            const results = calculateRequirements(targetItems, buildingEfficiency);
             displayRequirements(results);
         }
         
@@ -303,6 +330,8 @@
                 <h3>Required Buildings (per minute)</h3>
                 ${Object.entries(data.buildings).map(([building, count]) => `
                     <div class="item-row">
+                        ${building !== 'Raw Material' ? 
+                        `<img src="img/buildings/${building.replace(/ /g, '_')}.png" alt="${building}" class="item-image" style="width:24px;height:24px;margin-right:8px;">` : ''}
                         <span class="item-name">${building}</span>
                         <span class="item-quantity">${count.toFixed(2)}</span>
                     </div>
@@ -314,6 +343,11 @@
                 <h3>Material Requirements (per minute)</h3>
                 ${Object.entries(data.materials).map(([material, quantity]) => `
                     <div class="item-row">
+                        ${(() => {
+                            const matRecipe = itemsData.find(i => i.name === material);
+                            return matRecipe && matRecipe.primary_material !== 1 ? 
+                                `<img src="img/items/${material.replace(/ /g, '_')}.png" alt="${material}" class="item-image" style="width:24px;height:24px;margin-right:8px;">` : '';
+                        })()}
                         <span class="item-name">${material}</span>
                         <span class="item-quantity">${quantity.toFixed(2)}</span>
                     </div>
